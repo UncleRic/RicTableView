@@ -18,7 +18,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(RicCell.self, forCellReuseIdentifier: "RicCell")
-        data = ["Larry", "Moe", "Curly"]
+        data = ["Larry", "Moe", "Curly"]    // .sorted(), .reversed()
     }
     
     @IBAction func exitAction(_ sender: Any) {
@@ -32,7 +32,8 @@ class MainViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RicCell", for: indexPath) as! RicCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RicCell", for: indexPath)
+        cell.accessoryType = .detailDisclosureButton    // ... (.checkmark, .detailButton, .detailDisclosureButton)
         cell.textLabel!.text = data[indexPath.row]
         return cell
     }
